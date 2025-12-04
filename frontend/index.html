@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>StretchHub — Digital Library of Micro-Stretches</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>StretchHub</h1>
+    <p class="tag">Digital Library of micro-stretches — quick, guided, and perfect for screen breaks</p>
+  </header>
+
+  <main class="container">
+    <div class="controls">
+      <div class="search"><input id="q" type="text" placeholder="Search stretches..." /></div>
+      <select id="category"><option value="all">All categories</option></select>
+      <button class="btn" id="randomBtn">🎲 Random Stretch</button>
+      <button class="btn secondary" id="reminderBtn">⏰ Reminder: OFF</button>
+    </div>
+
+    <div id="library" class="grid" aria-live="polite"></div>
+    <div id="empty" style="display:none;text-align:center;color:#666;padding:30px">No stretches found.</div>
+
+    <footer>
+      <small>Made for hackathon • Click a card to start a guided micro-stretch (5–20s)</small>
+    </footer>
+  </main>
+
+  <!-- modal -->
+  <div id="modal" class="modal">
+    <div class="panel">
+      <div class="modal-header">
+        <h2 id="m-title">Stretch</h2>
+        <button onclick="closeModal()" class="btn secondary">Close</button>
+      </div>
+      <p id="m-desc">Description</p>
+      <div class="modal-body">
+        <div class="emoji" id="m-emoji">🤸</div>
+        <div>
+          <div class="chip" id="m-cat">Category</div>
+          <div class="small" id="m-target">Targets: …</div>
+        </div>
+      </div>
+      <div class="timer" id="timer">00:10</div>
+      <div class="panel start">
+        <button class="btn" id="startBtn" onclick="startTimer()">Start</button>
+        <button class="btn secondary" onclick="skipStretch()">Skip</button>
+      </div>
+      <div class="small">Tip: Close modal anytime. Streak counter saved locally.</div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
